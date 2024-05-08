@@ -36,6 +36,7 @@ local ts = require("telescope.builtin")
 
 -- Whickkey
 local km = {
+	-- Telescope Stuff
     f = {
         name = "Find",
         D = { ":Telescope file_browser<CR>", "File Browser (root)" },
@@ -53,11 +54,19 @@ local km = {
 
     ["\\"] = {":vs<cr>", "Vertical Split"},
 
+	-- Buffer Management
     b = {
       name = "Buffer",
       d = { "<Cmd>bd!<Cr>", "Close current buffer" },
       D = { "<Cmd>%bd|e#|bd#<Cr>", "Delete all buffers" },
     },
+
+	-- Lsp
+	l = {
+		name = "Lsp",
+		r = {vim.lsp.buf.rename, "Rename Symbol"},
+		f = {vim.lsp.buf.format, "Format"}
+	}
 }
 
 local wk = require("which-key")
