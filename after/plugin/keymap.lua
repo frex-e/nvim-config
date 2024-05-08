@@ -32,6 +32,13 @@ keymap("n", "<Right>", ":vertical resize -1<CR>", default_opts)
 keymap("n", "<Up>", ":resize -1<CR>", default_opts)
 keymap("n", "<Down>", ":resize +1<CR>", default_opts)
 
+-- Toggle Terminal Stuff
+keymap("n", "<C-Space>", ":ToggleTerm<CR>", default_opts)
+keymap("i", "<C-Space>", ":ToggleTerm<CR>", default_opts)
+keymap("t", "<C-Space>", "<C-\\><C-n>:ToggleTerm<CR>", default_opts)
+
+keymap("t", "<C-w>", "<C-\\><C-n><C-w>", default_opts)
+
 local ts = require("telescope.builtin")
 
 -- Whickkey
@@ -66,12 +73,17 @@ local km = {
 		name = "Lsp",
 		r = {vim.lsp.buf.rename, "Rename Symbol"},
 		f = {vim.lsp.buf.format, "Format"}
-	}
+	},
+
+	-- Terminal
+	t = {
+		name = "Terminal",
+		v = {":ToggleTerm direction=vertical size=60<CR>", "Toggle Terminal Vertical"},
+		h = {":ToggleTerm direction=horizontal<CR>", "Toggle Terminal Horizontal"}
+	},
 }
 
-local wk = require("which-key")
-
-wk.register(
+require("which-key").register(
     km
     ,{prefix = "<leader>"}
 )

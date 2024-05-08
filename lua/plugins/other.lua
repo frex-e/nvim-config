@@ -1,6 +1,17 @@
 return {
 	"tpope/vim-fugitive",
-	{ "folke/which-key.nvim", event = "VeryLazy", },
+	{
+		"folke/which-key.nvim",
+		event = "VeryLazy",
+		opts = {
+			window = {
+				border = "single",
+			},
+			layout = {
+				align = "center"
+			}
+		},
+	},
 	{
 		"nvim-treesitter/nvim-treesitter",
 		build = ":TSUpdate",
@@ -27,5 +38,12 @@ return {
 		config = true
 		-- use opts = {} for passing setup options
 		-- this is equalent to setup({}) function
-	}
+	},
+	{
+		'akinsho/bufferline.nvim',
+		version = "*",
+		dependencies = 'nvim-tree/nvim-web-devicons',
+		config = true
+	},
+	{ 'akinsho/toggleterm.nvim', version = "*", config = true }
 }
