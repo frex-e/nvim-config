@@ -38,7 +38,9 @@ local ts = require("telescope.builtin")
 local km = {
     f = {
         name = "Find",
-        b = { ":Telescope file_browser<CR>", "File Browser" },
+        D = { ":Telescope file_browser<CR>", "File Browser (root)" },
+        d = { ":Telescope file_browser path=%:p:h select_buffer=true<CR>", "File Browser (cwd)" },
+        b = {ts.buffers, "Buffers"},
         f = {ts.find_files, "Files"},
         l = {ts.live_grep, "Live Grep"},
         g = {

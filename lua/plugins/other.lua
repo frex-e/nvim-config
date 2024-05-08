@@ -10,7 +10,7 @@ return {
       configs.setup({
           sync_install = false,
           highlight = { enable = true },
-          indent = { enable = true },
+          indent = { enable = false },
         })
     end
     },{
@@ -19,5 +19,12 @@ return {
         -- add any options here
     },
     lazy = false,
+},
+{
+    'windwp/nvim-autopairs',
+    event = "InsertEnter",
+    config = true
+    -- use opts = {} for passing setup options
+    -- this is equalent to setup({}) function
 }
 }
