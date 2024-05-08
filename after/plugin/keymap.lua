@@ -1,8 +1,13 @@
 require("telescope").load_extension("fzf")
 
-local keymap = vim.api.nvim_set_keymap
+local keymap = vim.keymap.set
 local default_opts = { noremap = true, silent = true}
+
 local expr_opts = {noremap = true, expr = true, silent = true}
+
+local function describe(desc)
+	return { noremap = true, silent = true, desc = desc}
+end
 
 -- Escape using "jk".
 keymap("i", "jk", "<ESC>", default_opts)
@@ -38,6 +43,9 @@ keymap("i", "<C-Space>", ":ToggleTerm<CR>", default_opts)
 keymap("t", "<C-Space>", "<C-\\><C-n>:ToggleTerm<CR>", default_opts)
 
 keymap("t", "<C-w>", "<C-\\><C-n><C-w>", default_opts)
+
+-- Signature Help
+keymap("n", "gs", vim.lsp.buf.signature_help,describe("Signature Help"))
 
 local ts = require("telescope.builtin")
 

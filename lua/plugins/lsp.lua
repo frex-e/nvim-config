@@ -28,44 +28,21 @@ return {
 
 			-- And you can configure cmp even more, if you want to.
 			local cmp = require('cmp')
+			local cmp_action = lsp_zero.cmp_action()
 			local luasnip = require('luasnip')
 
 			cmp.setup({
 				formatting = lsp_zero.cmp_format({ details = true }),
 				mapping = {
-					['<CR>'] = cmp.mapping(function(fallback)
-						if cmp.visible() then
-							if luasnip.expandable() then
-								luasnip.expand()
-							else
-								if not cmp.confirm({ select = false, }) then
-									fallback()
-								end
-							end
-						else
-							fallback()
-						end
-					end),
-
 					["<Tab>"] = cmp.mapping(function(fallback)
 						if cmp.visible() then
-							cmp.select_next_item()
-						elseif luasnip.locally_jumpable(1) then
-							luasnip.jump(1)
+							cmp.confirm({ select = true })
 						else
 							fallback()
 						end
 					end, { "i", "s" }),
-
-					["<S-Tab>"] = cmp.mapping(function(fallback)
-						if cmp.visible() then
-							cmp.select_prev_item()
-						elseif luasnip.locally_jumpable(-1) then
-							luasnip.jump(-1)
-						else
-							fallback()
-						end
-					end, { "i", "s" }),
+					['<C-f>'] = cmp_action.luasnip_jump_forward(),
+					['<C-b>'] = cmp_action.luasnip_jump_backward(),
 				},
 				snippet = {
 					expand = function(args)
