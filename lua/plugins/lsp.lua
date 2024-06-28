@@ -32,7 +32,11 @@ return {
 			local luasnip = require('luasnip')
 
 			cmp.setup({
-				formatting = lsp_zero.cmp_format({ details = true }),
+				formatting = lsp_zero.cmp_format({ details = false }),
+				sources = {
+					{ name = "nvim_lsp" },
+					{ name = "nvim_lsp_signature_help", desc = "S" },
+				},
 				mapping = {
 					["<Tab>"] = cmp.mapping(function(fallback)
 						if cmp.visible() then
@@ -92,5 +96,7 @@ return {
 				}
 			})
 		end
-	}
+	},
+	{"hrsh7th/cmp-nvim-lsp-signature-help"}
+
 }

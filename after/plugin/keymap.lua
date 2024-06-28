@@ -80,7 +80,8 @@ local km = {
 	l = {
 		name = "Lsp",
 		r = {vim.lsp.buf.rename, "Rename Symbol"},
-		f = {vim.lsp.buf.format, "Format"}
+		f = {vim.lsp.buf.format, "Format"},
+		a = {vim.lsp.buf.code_action, "Code Actions"}
 	},
 
 	-- Terminal
