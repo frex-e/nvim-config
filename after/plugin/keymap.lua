@@ -1,5 +1,3 @@
-require("telescope").load_extension("fzf")
-
 local keymap = vim.keymap.set
 local default_opts = { noremap = true, silent = true}
 
@@ -38,14 +36,18 @@ keymap("n", "<Up>", ":resize -1<CR>", default_opts)
 keymap("n", "<Down>", ":resize +1<CR>", default_opts)
 
 -- Toggle Terminal Stuff
-keymap("n", "<C-Space>", ":ToggleTerm<CR>", default_opts)
-keymap("i", "<C-Space>", ":ToggleTerm<CR>", default_opts)
-keymap("t", "<C-Space>", "<C-\\><C-n>:ToggleTerm<CR>", default_opts)
+keymap("n", "<C-1>", ":ToggleTerm<CR>", default_opts)
+keymap("i", "<C-1>", "<Esc>:ToggleTerm<CR>", default_opts)
+keymap("t", "<C-1>", "<C-\\><C-n>:ToggleTerm<CR>", default_opts)
 
 keymap("t", "<C-w>", "<C-\\><C-n><C-w>", default_opts)
 
 -- Signature Help
-keymap("n", "gs", vim.lsp.buf.signature_help,describe("Signature Help"))
+keymap({"n","i"}, "<C-s>", vim.lsp.buf.signature_help,describe("Signature Help"))
+
+-- Switch Tabs
+keymap({"n", "i"}, "<C-8>","<Cmd>bprevious<Cr>",default_opts)
+keymap({"n", "i"}, "<C-9>","<Cmd>bnext<Cr>",default_opts)
 
 local ts = require("telescope.builtin")
 
@@ -58,13 +60,13 @@ local km = {
         d = { ":Telescope file_browser path=%:p:h select_buffer=true<CR>", "File Browser (cwd)" },
         b = {ts.buffers, "Buffers"},
         f = {ts.find_files, "Files"},
-        l = {ts.live_grep, "Live Grep"},
-        g = {
-            function ()
-                ts.grep_string({search = vim.fn.input("Grep > ")})
-            end,
-            "Grep String"
-        },
+        g = {ts.live_grep, "Grep String"},
+        -- g = {
+        --     function ()
+        --         ts.grep_string({search = vim.fn.input("Grep > ")})
+        --     end,
+        --     "Grep String"
+        -- },
     },
 
     ["\\"] = {":vs<cr>", "Vertical Split"},
@@ -75,13 +77,13 @@ local km = {
       d = { "<Cmd>bd!<Cr>", "Close current buffer" },
       D = { "<Cmd>%bd|e#|bd#<Cr>", "Delete all buffers" },
     },
-
 	-- Lsp
 	l = {
 		name = "Lsp",
 		r = {vim.lsp.buf.rename, "Rename Symbol"},
 		f = {vim.lsp.buf.format, "Format"},
-		a = {vim.lsp.buf.code_action, "Code Actions"}
+		a = {vim.lsp.buf.code_action, "Code Actions"},
+		h = {vim.lsp.buf.hover, "Hover Cursor"}
 	},
 
 	-- Terminal

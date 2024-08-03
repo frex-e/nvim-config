@@ -7,8 +7,8 @@ vim.opt.colorcolumn = "79"
 vim.opt.wrap = false
 
 -- Tabsize
-vim.opt.tabstop = 4
-vim.opt.shiftwidth = 4
+vim.opt.tabstop = 2
+vim.opt.shiftwidth = 2
 vim.opt.expandtab = false
 
 -- Remap leader and local leader to <Space>
