@@ -83,7 +83,10 @@ local km = {
 		r = {vim.lsp.buf.rename, "Rename Symbol"},
 		f = {vim.lsp.buf.format, "Format"},
 		a = {vim.lsp.buf.code_action, "Code Actions"},
-		h = {vim.lsp.buf.hover, "Hover Cursor"}
+		h = {vim.lsp.buf.hover, "Hover Cursor"},
+		d = {function ()
+			vim.diagnostic.open_float({scope="line"})
+		end, "Show line diagnostic"}
 	},
 
 	-- Terminal
