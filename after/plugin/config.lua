@@ -20,17 +20,17 @@ vim.opt.pumheight = 10
 
 vim.cmd("colorscheme dracula")
 
-vim.g.clipboard = {
-    name = "win32yank-wsl",
-    copy = {
-        ["+"] = "win32yank.exe -i --crlf",
-        ["*"] = "win32yank.exe -i --crlf",
-    },
-    paste = {
-        ["+"] = "win32yank.exe -o --lf",
-        ["*"] = "win32yank.exe -o --lf",
-    },
-    cache_enabled = true,
-}
+-- vim.g.clipboard = {
+--     name = "win32yank-wsl",
+--     copy = {
+--         ["+"] = "win32yank.exe -i --crlf",
+--         ["*"] = "win32yank.exe -i --crlf",
+--     },
+--     paste = {
+--         ["+"] = "win32yank.exe -o --lf",
+--         ["*"] = "win32yank.exe -o --lf",
+--     },
+--     cache_enabled = true,
+-- }
 
 vim.opt.clipboard = "unnamedplus"

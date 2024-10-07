@@ -11,10 +11,10 @@ return {
 
 			ft('typescript;javascript'):fmt("prettier")
 
-			require('guard').setup({
+			vim.g.guard_config ={
 				fmt_on_save = false,
 				lsp_as_default_formatter = true
-			})
+			}
 		end
 	},
 }
